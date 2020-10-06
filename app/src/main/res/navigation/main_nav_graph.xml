@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/movieFragment">
+
+    <fragment
+        android:id="@+id/movieFragment"
+        android:name="victorteka.github.io.tmdbapp.ui.movies.views.MovieFragment"
+        android:label="fragment_movie"
+        tools:layout="@layout/fragment_movie" />
+    <fragment
+        android:id="@+id/trendingFragment"
+        android:name="victorteka.github.io.tmdbapp.ui.trendings.views.TrendingFragment"
+        android:label="fragment_tranding"
+        tools:layout="@layout/fragment_tranding" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="victorteka.github.io.tmdbapp.ui.search.views.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/tvFragment"
+        android:name="victorteka.github.io.tmdbapp.ui.tv.views.TvFragment"
+        android:label="fragment_tv"
+        tools:layout="@layout/fragment_tv" />
+</navigation>
