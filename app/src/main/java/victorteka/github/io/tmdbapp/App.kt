@@ -1,7 +1,7 @@
 package victorteka.github.io.tmdbapp
 
 import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 
-class App: Application() {
-
-}
+@HiltAndroidApp
+class App: Application()
