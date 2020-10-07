@@ -13,4 +13,7 @@ interface ApiService {
 
     @GET("movie/latest")
     suspend fun getLatestMovie(): Response<Latest>
+
+    @GET("movie/popular")
+    suspend fun getPopular():Response<UpcomingResults>
 }

@@ -10,4 +10,6 @@ interface ApiHelper {
     suspend fun getUpcomingMovie(): Response<UpcomingResults>
 
     suspend fun getLatestMovie(): Response<Latest>
+
+    suspend fun getPopular():Response<UpcomingResults>
 }

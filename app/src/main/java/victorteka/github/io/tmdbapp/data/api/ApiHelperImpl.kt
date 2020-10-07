@@ -12,4 +12,6 @@ class ApiHelperImpl @Inject constructor(private val apiService: ApiService): Api
 
     override suspend fun getLatestMovie():
             Response<Latest> = apiService.getLatestMovie()
+
+    override suspend fun getPopular(): Response<UpcomingResults> = apiService.getPopular()
 }
