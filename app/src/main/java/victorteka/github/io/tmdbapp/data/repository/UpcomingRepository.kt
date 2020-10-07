@@ -17,7 +17,7 @@ class UpcomingRepository @Inject constructor(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Result> {
         try {
             val currentLoadingPageKey = params.key ?: 1
-            val response = apiHelper.getUpcomingMovie(Constants.API_KEY)
+            val response = apiHelper.getUpcomingMovie()
             val responseResult = mutableListOf<Result>()
             val result = response.body()?.results ?: emptyList()
             responseResult.addAll(result)
