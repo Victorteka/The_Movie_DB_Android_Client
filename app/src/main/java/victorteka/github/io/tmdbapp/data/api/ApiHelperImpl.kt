@@ -6,5 +6,6 @@ import javax.inject.Inject
 
 class ApiHelperImpl @Inject constructor(private val apiService: ApiService): ApiHelper {
 
-    override suspend fun getUpcomingMovie(): Response<UpcomingResults> = apiService.getUpcomingMovie()
+    override suspend fun getUpcomingMovie(apiKey: String):
+            Response<UpcomingResults> = apiService.getUpcomingMovie(apiKey)
 }

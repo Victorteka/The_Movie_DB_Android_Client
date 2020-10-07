@@ -6,8 +6,7 @@ import retrofit2.http.Query
 import victorteka.github.io.tmdbapp.data.models.upcoming.UpcomingResults
 
 interface ApiService {
-    @GET("movie/upcoming")
+    @GET("movie/upcoming?page=1")
     suspend fun getUpcomingMovie(
-        @Query("api_key") apiKey: String,
-        @Query("page") pageNumber: Int): Response<UpcomingResults>
+        @Query("api_key") apiKey: String): Response<UpcomingResults>
 }

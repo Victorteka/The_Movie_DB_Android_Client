@@ -8,14 +8,12 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.converter.moshi.MoshiConverterFactory
 import victorteka.github.io.tmdbapp.BuildConfig
 import victorteka.github.io.tmdbapp.data.api.ApiHelper
 import victorteka.github.io.tmdbapp.data.api.ApiHelperImpl
 import victorteka.github.io.tmdbapp.data.api.ApiService
-import victorteka.github.io.tmdbapp.utils.CacheInterceptor
+import victorteka.github.io.tmdbapp.utils.AuthInterceptor
 import victorteka.github.io.tmdbapp.utils.Constants
-import victorteka.github.io.tmdbapp.utils.ForceCacheInterceptor
 import javax.inject.Singleton
 
 @Module
@@ -26,26 +24,30 @@ class ApplicationModule {
     @Singleton
     fun provideBaseURL() = Constants.BASE_URL
 
-    /*@Provides
+    /*@ApiKey
+    @Provides
     @Singleton
     fun provideApiKey() = Constants.API_KEY*/
 
     @Provides
     @Singleton
+    fun provideOkHttpClient() = if (BuildConfig.DEBUG) {
+        val loggingInterceptor = HttpLoggingInterceptor()
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+        OkHttpClient.Builder()
+            .addInterceptor(AuthInterceptor())
+            .addInterceptor(loggingInterceptor)
+            .build()
+    } else OkHttpClient
+        .Builder()
+        .addInterceptor(AuthInterceptor())
+        .build()
+
     /*fun provideOkHttpClient() = OkHttpClient
         .Builder()
         .addNetworkInterceptor(CacheInterceptor())
         .addInterceptor(ForceCacheInterceptor())
         .build()*/
-    fun provideOkHttpClient() = if (BuildConfig.DEBUG) {
-        val loggingInterceptor = HttpLoggingInterceptor()
-        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
-        OkHttpClient.Builder()
-            .addInterceptor(loggingInterceptor)
-            .build()
-    } else OkHttpClient
-        .Builder()
-        .build()
 
     @Provides
     @Singleton
@@ -58,7 +60,7 @@ class ApplicationModule {
 
     @Provides
     @Singleton
-    fun provideApiService(retrofit: Retrofit) = retrofit.create(ApiService::class.java)
+    fun provideApiService(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
 
     @Provides
     @Singleton

@@ -1,9 +1,10 @@
 package victorteka.github.io.tmdbapp.ui.movies.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.movie_item.view.*
@@ -11,17 +12,9 @@ import victorteka.github.io.tmdbapp.R
 import victorteka.github.io.tmdbapp.data.models.upcoming.Result
 import victorteka.github.io.tmdbapp.utils.Constants
 
-class UpcomingMovieAdapter(private val upcomingMovies: ArrayList<Result>):
-    RecyclerView.Adapter<UpcomingMovieAdapter.UpcomingDataViewHolder>() {
+class UpcomingMovieAdapter: PagingDataAdapter<Result, UpcomingMovieAdapter.UpcomingDataViewHolder>(DataDifferntiator){
 
-    class UpcomingDataViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        fun bind(upcomingResults:Result){
-            itemView.movieTitle.text = upcomingResults.title
-            itemView.date.text = upcomingResults.releaseDate
-            Glide.with(itemView.posterImage.context).load(Constants.IMAGE_URL+upcomingResults.posterPath)
-                .into(itemView.posterImage)
-        }
-    }
+    class UpcomingDataViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UpcomingDataViewHolder {
         return UpcomingDataViewHolder(
@@ -30,13 +23,21 @@ class UpcomingMovieAdapter(private val upcomingMovies: ArrayList<Result>):
         )
     }
 
-    override fun getItemCount(): Int = upcomingMovies.size
-
     override fun onBindViewHolder(holder: UpcomingDataViewHolder, position: Int) {
-        holder.bind(upcomingMovies[position])
+        holder.itemView.movieTitle.text = "${getItem(position)?.title}"
+        holder.itemView.date.text = "${getItem(position)?.releaseDate}"
+        Glide.with(holder.itemView.posterImage.context).load(Constants.IMAGE_URL+"${getItem(position)?.posterPath}")
+            .into(holder.itemView.posterImage)
     }
 
-    fun addData(list: List<Result>){
-        upcomingMovies.addAll(list)
+    object DataDifferntiator: DiffUtil.ItemCallback<Result>(){
+        override fun areItemsTheSame(oldItem: Result, newItem: Result): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: Result, newItem: Result): Boolean {
+            return oldItem == newItem
+        }
+
     }
 }
