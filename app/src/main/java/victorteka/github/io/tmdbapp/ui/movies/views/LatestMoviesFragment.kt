@@ -38,7 +38,7 @@ class LatestMoviesFragment : Fragment() {
         viewModel.latestMovie.observe(viewLifecycleOwner, Observer {
             when (it.status) {
                 Status.SUCCESS -> {
-                    latestMovie.visibility = View.VISIBLE
+                    trendingContainer.visibility = View.VISIBLE
                     it.data?.let { movie ->
                         latestMovieTitle.text = movie.title
                         Glide.with(latestMoviePoster.context).load(Constants.IMAGE_URL+movie.posterPath)
@@ -51,7 +51,7 @@ class LatestMoviesFragment : Fragment() {
                 }
                 Status.ERROR -> {
                     Toast.makeText(requireContext(), it.msg, Toast.LENGTH_LONG).show()
-                    latestMovie.visibility = View.GONE
+                    trendingContainer.visibility = View.GONE
                 }
             }
         })

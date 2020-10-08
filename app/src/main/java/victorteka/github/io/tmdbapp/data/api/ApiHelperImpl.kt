@@ -2,6 +2,8 @@ package victorteka.github.io.tmdbapp.data.api
 
 import retrofit2.Response
 import victorteka.github.io.tmdbapp.data.models.latest.Latest
+import victorteka.github.io.tmdbapp.data.models.trending.Trend
+import victorteka.github.io.tmdbapp.data.models.tv.LiveShows
 import victorteka.github.io.tmdbapp.data.models.upcoming.UpcomingResults
 import javax.inject.Inject
 
@@ -14,4 +16,8 @@ class ApiHelperImpl @Inject constructor(private val apiService: ApiService): Api
             Response<Latest> = apiService.getLatestMovie()
 
     override suspend fun getPopular(): Response<UpcomingResults> = apiService.getPopular()
+
+    override suspend fun getTrending(): Response<Trend> = apiService.getTrending()
+
+    override suspend fun getTvOnAir(): Response<LiveShows> = apiService.getTvOnAir()
 }
