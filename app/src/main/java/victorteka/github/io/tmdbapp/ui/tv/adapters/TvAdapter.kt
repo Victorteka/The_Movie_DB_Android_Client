@@ -6,9 +6,11 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.trending_item.view.*
+import com.bumptech.glide.Glide
+import kotlinx.android.synthetic.main.tv_item.view.*
 import victorteka.github.io.tmdbapp.R
 import victorteka.github.io.tmdbapp.data.models.tv.Result
+import victorteka.github.io.tmdbapp.utils.Constants
 
 class TvAdapter: PagingDataAdapter<Result, TvAdapter.TvDataViewHolder>(DataDifferentiator) {
 
@@ -18,13 +20,16 @@ class TvAdapter: PagingDataAdapter<Result, TvAdapter.TvDataViewHolder>(DataDiffe
     override fun onBindViewHolder(holder: TvDataViewHolder, position: Int) {
         holder.itemView.trendingTitle.text = "${getItem(position)?.name}"
         holder.itemView.trendingOverview.text = "${getItem(position)?.overview}"
+        holder.itemView.trendingReleaseDate.text = "${getItem(position)?.firstAirDate}"
+        Glide.with(holder.itemView.trendingPoster.context).load(Constants.IMAGE_URL+getItem(position)?.posterPath)
+            .into(holder.itemView.trendingPoster)
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TvDataViewHolder {
         return TvDataViewHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.trending_item, parent, false)
+                .inflate(R.layout.tv_item, parent, false)
         )
     }
 

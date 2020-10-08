@@ -2,6 +2,7 @@ package victorteka.github.io.tmdbapp.data.api
 
 import retrofit2.Response
 import victorteka.github.io.tmdbapp.data.models.latest.Latest
+import victorteka.github.io.tmdbapp.data.models.searching.SearchMovie
 import victorteka.github.io.tmdbapp.data.models.trending.Trend
 import victorteka.github.io.tmdbapp.data.models.tv.LiveShows
 import victorteka.github.io.tmdbapp.data.models.upcoming.UpcomingResults
@@ -20,4 +21,6 @@ class ApiHelperImpl @Inject constructor(private val apiService: ApiService): Api
     override suspend fun getTrending(): Response<Trend> = apiService.getTrending()
 
     override suspend fun getTvOnAir(): Response<LiveShows> = apiService.getTvOnAir()
+
+    override suspend fun search(query: String): Response<SearchMovie> = apiService.search(query)
 }
