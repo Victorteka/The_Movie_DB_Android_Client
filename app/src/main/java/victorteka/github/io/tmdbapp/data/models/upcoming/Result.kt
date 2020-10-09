@@ -1,8 +1,11 @@
 package victorteka.github.io.tmdbapp.data.models.upcoming
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Result(
     val popularity: Double,
     @SerializedName("vote_count")
@@ -26,4 +29,4 @@ data class Result(
     val overview: String,
     @SerializedName("release_date")
     val releaseDate: String
-)
+) : Parcelable

@@ -37,6 +37,11 @@ android {
     buildTypes.each{
         it.buildConfigField 'String', 'TMDB_API_KEY', TMDB_API_KEY
     }
+
+    //Enable data binding
+    buildFeatures{
+        dataBinding true
+    }
 }
 
 dependencies {

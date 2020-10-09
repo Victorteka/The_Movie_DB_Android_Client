@@ -1,11 +1,13 @@
 package victorteka.github.io.tmdbapp.ui.movies.views
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
@@ -18,6 +20,7 @@ import victorteka.github.io.tmdbapp.R
 import victorteka.github.io.tmdbapp.data.models.upcoming.Result
 import victorteka.github.io.tmdbapp.ui.movies.adapters.MoviesLoadStateAdapter
 import victorteka.github.io.tmdbapp.ui.movies.adapters.UpcomingMovieAdapter
+import victorteka.github.io.tmdbapp.ui.movies.adapters.UpcomingMovieListener
 import victorteka.github.io.tmdbapp.ui.movies.viewmodels.UpcomingMovieViewModel
 import victorteka.github.io.tmdbapp.utils.Status
 
@@ -53,7 +56,14 @@ class UpcomingMoviesFragment : Fragment() {
     }
 
     private fun setupUI() {
-        adapter = UpcomingMovieAdapter()
+        adapter = UpcomingMovieAdapter(UpcomingMovieListener {
+            Toast.makeText(requireContext(), "${it.title}", Toast.LENGTH_LONG).show()
+            val intent = Intent(requireContext(), MovieDetailsActivity::class.java)
+            var bundle = Bundle()
+            bundle.putParcelable("movieSelected", it)
+            intent.putExtra("movieBundle", bundle)
+            startActivity(intent)
+        })
         adapter.addLoadStateListener {
             if (it.refresh == LoadState.Loading) {
                 upcomingMoviePB.visibility = View.VISIBLE
