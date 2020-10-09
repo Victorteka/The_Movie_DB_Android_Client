@@ -28,8 +28,8 @@
                     android:id="@+id/movieDetailsOverview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="nhfbhbdb"
                     android:textSize="18sp"
+                    android:padding="10dp"
                     />
             </com.google.android.material.card.MaterialCardView>
         </LinearLayout>

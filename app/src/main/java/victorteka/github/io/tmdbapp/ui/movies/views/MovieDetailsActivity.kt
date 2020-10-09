@@ -3,6 +3,7 @@ package victorteka.github.io.tmdbapp.ui.movies.views
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.Glide
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_movie_details.*
 import victorteka.github.io.tmdbapp.R
 import victorteka.github.io.tmdbapp.data.models.upcoming.Result
@@ -14,6 +15,7 @@ import victorteka.github.io.tmdbapp.ui.movies.views.moviedetails.RateFragment
 import victorteka.github.io.tmdbapp.ui.movies.views.moviedetails.RecommendationFragment
 import victorteka.github.io.tmdbapp.utils.Constants
 
+@AndroidEntryPoint
 class MovieDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
