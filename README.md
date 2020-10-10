@@ -19,13 +19,11 @@ Libraries used in the whole application are:
   - [Data Binding](https://developer.android.com/topic/libraries/data-binding) - support library that allows binding of UI components in  layouts to data sources,binds character details and search results to UI
 
 - [kotlinx.coroutines](https://github.com/Kotlin/kotlinx.coroutines) - Library Support for coroutines,provides `runBlocking` coroutine builder used in tests
+and supports coroutines out of the box.
 - [Retrofit](https://square.github.io/retrofit/) - type safe http client
 - [Dagger-Hilt](https://dagger.dev/hilt/) Dependency injection
 - [Paging3](https://developer.android.com/topic/libraries/architecture/paging/v3-overview) Loading a lot of data efficiently
-and supports coroutines out of the box.
-- [Moshi](https://github.com/square/moshi) - JSON Parser,used to parse
-requests on the data layer for Entities and understands Kotlin non-nullable
-and default parameters
+- [Gson](https://github.com/google/gson) - A Java serialization/deserialization library to convert Java Objects into JSON and back
 - [okhttp-logging-interceptor](https://github.com/square/okhttp/blob/master/okhttp-logging-interceptor/README.md) - logs HTTP request and response data.
 - [Material Design](https://material.io/develop/android/docs/getting-started/) - build awesome beautiful UIs.🔥🔥
 
@@ -34,8 +32,6 @@ and default parameters
 |Upcoming movies| Latest movie| Popular movies| Trending shows|
 |:----:|:----:|:----:|:----:|
 |<img src="screenshots/upcoming.png" width=300/>|<img src="screenshots/latest.png" width=300/>|<img src="screenshots/popular.png" width=300/>|<img src="screenshots/trend.png" width=300/>|
-|:----:|:----:|:----:|:----:|
 |Search| Tv shows| Movie details|
-|:----:|:----:|:----:|
 |<img src="screenshots/search.png" width=300/>|<img src="screenshots/tv.png" width=300/>|<img src="screenshots/details.png" width=300/>|
 |:----:|:----:|:----:|
