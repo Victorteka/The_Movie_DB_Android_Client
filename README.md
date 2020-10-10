@@ -28,6 +28,7 @@ and default parameters
 - [Material Design](https://material.io/develop/android/docs/getting-started/) - build awesome beautiful UIs.🔥🔥
 
 ## Screenshots
+|:----:|:----:|:----:|:----:|
 |Upcoming movies| Latest movie| Popular movies| Trending movies|
 |<img src="screenshots/upcoming.png" width=300/>|<img src="screenshots/latest.png" width=300/>|<img src="screenshots/popular.png" width=300/>|<img src="screenshots/trend.png" width=300/>|
 |:----:|:----:|:----:|:----:|
