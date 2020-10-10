@@ -20,6 +20,8 @@ Libraries used in the whole application are:
 
 - [kotlinx.coroutines](https://github.com/Kotlin/kotlinx.coroutines) - Library Support for coroutines,provides `runBlocking` coroutine builder used in tests
 - [Retrofit](https://square.github.io/retrofit/) - type safe http client
+- [Dagger-Hilt](https://dagger.dev/hilt/) Dependency injection
+- [Paging3](https://developer.android.com/topic/libraries/architecture/paging/v3-overview) Loading a lot of data efficiently
 and supports coroutines out of the box.
 - [Moshi](https://github.com/square/moshi) - JSON Parser,used to parse
 requests on the data layer for Entities and understands Kotlin non-nullable
@@ -29,10 +31,11 @@ and default parameters
 
 ## Screenshots
 
-|Upcoming movies| Latest movie| Popular movies| Trending movies|
+|Upcoming movies| Latest movie| Popular movies| Trending shows|
 |:----:|:----:|:----:|:----:|
 |<img src="screenshots/upcoming.png" width=300/>|<img src="screenshots/latest.png" width=300/>|<img src="screenshots/popular.png" width=300/>|<img src="screenshots/trend.png" width=300/>|
 |:----:|:----:|:----:|:----:|
 |Search| Tv shows| Movie details|
+|:----:|:----:|:----:|
 |<img src="screenshots/search.png" width=300/>|<img src="screenshots/tv.png" width=300/>|<img src="screenshots/details.png" width=300/>|
 |:----:|:----:|:----:|
