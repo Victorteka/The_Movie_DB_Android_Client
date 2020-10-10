@@ -8,10 +8,9 @@ import kotlinx.android.synthetic.main.activity_movie_details.*
 import victorteka.github.io.tmdbapp.R
 import victorteka.github.io.tmdbapp.data.models.upcoming.Result
 import victorteka.github.io.tmdbapp.ui.movies.adapters.MovieDetailsViewPager
-import victorteka.github.io.tmdbapp.ui.movies.adapters.MovieViewPagerAdapter
 import victorteka.github.io.tmdbapp.ui.movies.views.moviedetails.MovieDetailsFragment
 import victorteka.github.io.tmdbapp.ui.movies.views.moviedetails.MovieReviewFragment
-import victorteka.github.io.tmdbapp.ui.movies.views.moviedetails.RateFragment
+import victorteka.github.io.tmdbapp.ui.movies.views.moviedetails.NetflixFragment
 import victorteka.github.io.tmdbapp.ui.movies.views.moviedetails.RecommendationFragment
 import victorteka.github.io.tmdbapp.utils.Constants
 
@@ -36,19 +35,26 @@ class MovieDetailsActivity : AppCompatActivity() {
 
     private fun setupViewPager(bundle: Bundle) {
         val adapter = MovieDetailsViewPager(supportFragmentManager)
+        //pass movie id through bundle
         val movieDetailsFragment = MovieDetailsFragment()
         movieDetailsFragment.arguments = bundle
         adapter.addFragment(movieDetailsFragment, "Details")
+
         val movieReviewFragment = MovieReviewFragment()
         movieReviewFragment.arguments = bundle
         adapter.addFragment(movieReviewFragment, "Reviews")
+
+        val netflixFragment = NetflixFragment()
+        netflixFragment.arguments = bundle
+        adapter.addFragment(netflixFragment, "Netflix")
+
         val recommendationFragment = RecommendationFragment()
         recommendationFragment.arguments = bundle
         adapter.addFragment(recommendationFragment, "Recommendation")
-        val rateFragment = RateFragment()
-        rateFragment.arguments = bundle
-        adapter.addFragment(rateFragment, "Rate")
+
         movieDetailsViewPager.adapter = adapter
         movieDetailsTabs.setupWithViewPager(movieDetailsViewPager)
+
+
     }
 }

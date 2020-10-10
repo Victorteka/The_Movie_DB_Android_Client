@@ -6,6 +6,7 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 import victorteka.github.io.tmdbapp.data.models.latest.Latest
 import victorteka.github.io.tmdbapp.data.models.moviedetails.MovieDetail
+import victorteka.github.io.tmdbapp.data.models.reviews.Review
 import victorteka.github.io.tmdbapp.data.models.searching.SearchMovie
 import victorteka.github.io.tmdbapp.data.models.trending.Trend
 import victorteka.github.io.tmdbapp.data.models.tv.LiveShows
@@ -33,4 +34,7 @@ interface ApiService {
 
     @GET("movie/{movie_id}")
     suspend fun getMovieDetail(@Path("movie_id") movieId: String): Response<MovieDetail>
+
+    @GET("movie/{movie_id}/reviews")
+    suspend fun getMovieReview(@Path("movie_id") movieId: String): Response<Review>
 }

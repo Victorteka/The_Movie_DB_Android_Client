@@ -3,6 +3,7 @@ package victorteka.github.io.tmdbapp.data.api
 import retrofit2.Response
 import victorteka.github.io.tmdbapp.data.models.latest.Latest
 import victorteka.github.io.tmdbapp.data.models.moviedetails.MovieDetail
+import victorteka.github.io.tmdbapp.data.models.reviews.Review
 import victorteka.github.io.tmdbapp.data.models.searching.SearchMovie
 import victorteka.github.io.tmdbapp.data.models.trending.Trend
 import victorteka.github.io.tmdbapp.data.models.tv.LiveShows
@@ -27,4 +28,8 @@ class ApiHelperImpl @Inject constructor(private val apiService: ApiService): Api
 
     override suspend fun getMovieDetail(movieId: String)
             : Response<MovieDetail> = apiService.getMovieDetail(movieId)
+
+    override suspend fun getMovieReview(movieId: String): Response<Review> = apiService.getMovieReview(movieId)
+
+
 }

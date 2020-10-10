@@ -3,6 +3,7 @@ package victorteka.github.io.tmdbapp.data.api
 import retrofit2.Response
 import victorteka.github.io.tmdbapp.data.models.latest.Latest
 import victorteka.github.io.tmdbapp.data.models.moviedetails.MovieDetail
+import victorteka.github.io.tmdbapp.data.models.reviews.Review
 import victorteka.github.io.tmdbapp.data.models.searching.SearchMovie
 import victorteka.github.io.tmdbapp.data.models.trending.Trend
 import victorteka.github.io.tmdbapp.data.models.tv.LiveShows
@@ -23,4 +24,6 @@ interface ApiHelper {
     suspend fun search(query: String): Response<SearchMovie>
 
     suspend fun getMovieDetail(movieId: String): Response<MovieDetail>
+
+    suspend fun getMovieReview(movieId: String): Response<Review>
 }
