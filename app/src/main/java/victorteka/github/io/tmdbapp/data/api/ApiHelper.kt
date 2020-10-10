@@ -26,4 +26,6 @@ interface ApiHelper {
     suspend fun getMovieDetail(movieId: String): Response<MovieDetail>
 
     suspend fun getMovieReview(movieId: String): Response<Review>
+
+    suspend fun getMovieRecommendations(movieId: String): Response<UpcomingResults>
 }

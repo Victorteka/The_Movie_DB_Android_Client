@@ -37,4 +37,7 @@ interface ApiService {
 
     @GET("movie/{movie_id}/reviews")
     suspend fun getMovieReview(@Path("movie_id") movieId: String): Response<Review>
+
+    @GET("movie/{movie_id}/recommendations")
+    suspend fun getMovieRecommendations(@Path("movie_id") movieId: String): Response<UpcomingResults>
 }

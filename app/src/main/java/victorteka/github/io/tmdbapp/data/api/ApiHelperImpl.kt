@@ -24,12 +24,17 @@ class ApiHelperImpl @Inject constructor(private val apiService: ApiService): Api
 
     override suspend fun getTvOnAir(): Response<LiveShows> = apiService.getTvOnAir()
 
-    override suspend fun search(query: String): Response<SearchMovie> = apiService.search(query)
+    override suspend fun search(query: String)
+            : Response<SearchMovie> = apiService.search(query)
 
     override suspend fun getMovieDetail(movieId: String)
             : Response<MovieDetail> = apiService.getMovieDetail(movieId)
 
-    override suspend fun getMovieReview(movieId: String): Response<Review> = apiService.getMovieReview(movieId)
+    override suspend fun getMovieReview(movieId: String)
+            : Response<Review> = apiService.getMovieReview(movieId)
+
+    override suspend fun getMovieRecommendations(movieId: String)
+            : Response<UpcomingResults> = apiService.getMovieRecommendations(movieId)
 
 
 }

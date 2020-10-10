@@ -50,7 +50,7 @@ class MovieReviewFragment : Fragment() {
                     }
                 }
                 Status.LOADING -> {
-
+                    reviewsProgresBar.visibility = View.VISIBLE
                 }
                 Status.ERROR -> {
                     Toast.makeText(requireContext(), it.msg, Toast.LENGTH_LONG).show()
